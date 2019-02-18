@@ -4,7 +4,7 @@ configuration:
 
 flows:
   onPullRequest:
-    - log: "Pull Request: ${event.payload.head.sha} to ${event.project}/${event.repository}"
+    - log: "Pull Request: ${event.payload.pull_request.head.sha} to ${event.project}/${event.repository}"
 
     - task: github
       in:
@@ -12,7 +12,7 @@ flows:
         accessToken: "${crypto.decryptString('t331coTwP25x6p731bo2n55bJVc6yGdhJGvfJDKytxmQ+VwXhs97WBBo1O60i/7R')}"
         org: "Default"
         repo: "concord-status-test"
-        commitSHA: "${event.payload.head.sha}"
+        commitSHA: "${event.payload.pull_request.head.sha}"
         state: "pending"
         targetUrl: "http://localhost:3000/#/process/${txId}"
         description: "Concord flow"
