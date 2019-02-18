@@ -4,7 +4,7 @@ configuration:
 
 flows:
   onPullRequest:
-    - log: "Pull Request: ${event.head.sha} to ${event.project}/${event.repository}"
+    - log: "Pull Request: ${event} to ${event.project}/${event.repository}"
 
     - task: github
       in:
