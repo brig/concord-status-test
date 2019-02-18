@@ -5,5 +5,4 @@ flows:
 triggers:
   - github:
       type: pull_request
-      useInitiator: true
       entryPoint: onPullRequest
