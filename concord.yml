@@ -1,6 +1,22 @@
+configuration:
+  dependencies:
+    - "mvn://com.walmartlabs.concord.plugins:git:1.0.0-SNAPSHOT"
+
 flows:
   onPullRequest:
-    - log: "Pull Request: ${event.commitId} to ${event.project}/${event.repository}"
+    - log: "Pull Request: ${event.head.sha} to ${event.project}/${event.repository}"
+
+    - task: github
+      in:
+        action: "statusCheck"
+        accessToken: "${crypto.decryptString('t331coTwP25x6p731bo2n55bJVc6yGdhJGvfJDKytxmQ+VwXhs97WBBo1O60i/7R')}"
+        org: "Default"
+        repo: "concord-status-test"
+        commitSHA: "${event.head.sha}"
+        state: "pending"
+        targetUrl: "http://localhost:3000/#/process/${txId}"
+        description: "Concord flow"
+
 
 triggers:
   - github:
