@@ -26,7 +26,7 @@ flows:
         org: "brig" # github ORG
         repo: "concord-status-test"
         commitSHA: "${event.payload.pull_request.head.sha}"
-        state: "done"
+        state: "success"
         targetUrl: "http://localhost:3000/#/process/${txId}"
         description: "Concord flow"
 
