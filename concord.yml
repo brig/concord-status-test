@@ -10,9 +10,6 @@ flows:
       in:
         action: "addStatus"
         accessToken: "${crypto.decryptString('t331coTwP25x6p731bo2n55bJVc6yGdhJGvfJDKytxmQ+VwXhs97WBBo1O60i/7R')}"
-        org: "brig" # github ORG
-        repo: "concord-status-test"
-        commitSHA: "${event.payload.pull_request.head.sha}"
         state: "pending"
         targetUrl: "http://localhost:3000/#/process/${txId}"
         description: "Concord flow"
@@ -23,9 +20,6 @@ flows:
       in:
         action: "addStatus"
         accessToken: "${crypto.decryptString('t331coTwP25x6p731bo2n55bJVc6yGdhJGvfJDKytxmQ+VwXhs97WBBo1O60i/7R')}"
-        org: "brig" # github ORG
-        repo: "concord-status-test"
-        commitSHA: "${event.payload.pull_request.head.sha}"
         state: "success"
         targetUrl: "http://localhost:3000/#/process/${txId}"
         description: "Concord flow"
