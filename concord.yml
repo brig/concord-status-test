@@ -1,3 +1,4 @@
+
 configuration:
   dependencies:
     - "mvn://com.walmartlabs.concord.plugins:git:1.0.0-SNAPSHOT"
