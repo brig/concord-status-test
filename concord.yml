@@ -25,7 +25,18 @@ flows:
         targetUrl: "http://localhost:3000/#/process/${txId}"
         description: "Concord flow"
 
+  hourlyCleanUp:
+    - log: "Cleanup time!"
+    
 triggers:
   - github:
       type: pull_request
       entryPoint: onPullRequest
+
+  - cron:
+      spec: "0 0 * * *"
+      entryPoint: hourlyCleanUp
+      
+  - cron:
+      spec: "0 0 * * *"
+      entryPoint: hourlyCleanUp      
