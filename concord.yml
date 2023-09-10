@@ -1,9 +1,3 @@
 flows:
-  onPullRequest:
-    - log: "Pull Request: ${event.commitId} to ${event.project}/${event.repository}"
-
-triggers:
-  - github:
-      type: pull_request
-      useInitiator: true
-      entryPoint: onPullRequest
+  test:
+    - log: "Hello"
