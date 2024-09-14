@@ -1,42 +1,19 @@
-
-configuration:
-  dependencies:
-    - "mvn://com.walmartlabs.concord.plugins:git:1.0.0-SNAPSHOT"
-
 flows:
+  onPush:
+    - logYaml: "${event}"
+
   onPullRequest:
-    - log: "Pull Request: ${event.payload.pull_request.head.sha} to ${event.project}/${event.repository}"
+    - logYaml: "${event}"
 
-    - task: github
-      in:
-        action: "addStatus"
-        accessToken: "${crypto.decryptString('t331coTwP25x6p731bo2n55bJVc6yGdhJGvfJDKytxmQ+VwXhs97WBBo1O60i/7R')}"
-        state: "pending"
-        targetUrl: "http://localhost:3000/#/process/${txId}"
-        description: "Concord flow"
-
-    - log: "SOME WORK"
-
-    - task: github
-      in:
-        action: "addStatus"
-        accessToken: "${crypto.decryptString('t331coTwP25x6p731bo2n55bJVc6yGdhJGvfJDKytxmQ+VwXhs97WBBo1O60i/7R')}"
-        state: "success"
-        targetUrl: "http://localhost:3000/#/process/${txId}"
-        description: "Concord flow"
-
-  hourlyCleanUp:
-    - log: "Cleanup time!"
-    
 triggers:
   - github:
-      type: pull_request
+      version: 2
       entryPoint: onPullRequest
+      conditions:
+        type: pull_request
 
-  - cron:
-      spec: "0 0 * * *"
-      entryPoint: hourlyCleanUp
-      
-  - cron:
-      spec: "0 0 * * *"
-      entryPoint: hourlyCleanUp      
+  - github:
+      version: 2
+      entryPoint: onPush
+      conditions:
+        type: push
