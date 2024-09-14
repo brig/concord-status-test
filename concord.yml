@@ -11,9 +11,13 @@ triggers:
       entryPoint: onPullRequest
       conditions:
         type: pull_request
+        githubOrg: "aetion"
+        githubRepo: "ck8s-ext"
 
   - github:
       version: 2
       entryPoint: onPush
       conditions:
         type: push
+        githubOrg: "aetion"
+        githubRepo: "ck8s-ext"
