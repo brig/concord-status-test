@@ -38,6 +38,8 @@
         const arguments = {};
         const meta = {};
 
+        const requestParams = {};
+
         const formData = new FormData(form);
         for (let field of formData) {
             const fieldName = field[0];
@@ -49,6 +51,8 @@
                 arguments[fieldName] = fieldValue;
             } else if (fieldName === 'ck8sRef') {
                 result.set('repoBranchOrTag', fieldValue);
+            } else if (fieldName === 'dryRun') {
+                requestParams[fieldName] = fieldValue
             } else if (fieldName.startsWith('arguments.')) {
                 const argName = fieldName.substring('arguments.'.length);
 
@@ -74,8 +78,6 @@
                 result.set(fieldName, fieldValue);
             }
         }
-
-        const requestParams = {};
 
         if (Object.keys(arguments).length !== 0) {
             requestParams['arguments'] = arguments;
