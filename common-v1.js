@@ -105,6 +105,13 @@
     window.ck8s = {
         initializeForm: (data, formSelector = '#myForm') => {
             const myForm = $(formSelector);
+
+            myForm.append(`
+                <input id="org" name="org" type="hidden"/>
+                <input id="project" name="project" type="hidden"/>
+                <input id="repo" name="repo" type="hidden"/>
+            `);
+
             myForm
                 .form('set values', data.values)
                 .form('set values', data);
