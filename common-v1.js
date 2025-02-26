@@ -48,7 +48,7 @@
             } else if (fieldName === 'flow') {
                 arguments[fieldName] = fieldValue;
             } else if (fieldName === 'ck8sRef') {
-                arguments['repoBranchOrTag'] = fieldValue;
+                result.set('repoBranchOrTag', fieldValue);
             } else if (fieldName.startsWith('arguments.')) {
                 const argName = fieldName.substring('arguments.'.length);
 
