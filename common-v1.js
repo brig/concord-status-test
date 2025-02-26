@@ -134,7 +134,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '/api/ck8s/v3/process',
+                    url: '/api/ck8s/v3/process/form',
                     data: formData,
                     processData: false,
                     contentType: false,
