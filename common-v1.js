@@ -93,7 +93,11 @@
             requestParams['meta'] = meta;
         }
 
-        result.set("request", JSON.stringify(requestParams));
+        const jsonBlob = new Blob([JSON.stringify(requestParams)], {
+            type: 'application/json'
+        });
+
+        result.set("request", jsonBlob);
 
         return result;
     }
